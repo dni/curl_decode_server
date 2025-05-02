@@ -3,7 +3,7 @@ from hashlib import sha256
 
 from base58 import b58decode, b58encode
 from bech32 import bech32_decode, bech32_encode, convertbits
-from fastapi import APIRouter, Body
+from fastapi import APIRouter, Body, Request
 from fastapi.responses import PlainTextResponse
 
 from .ascii_art import about, donate, welcome
@@ -11,8 +11,8 @@ from .ascii_art import about, donate, welcome
 router = APIRouter()
 
 @router.get("/")
-async def root() -> PlainTextResponse:
-    return PlainTextResponse(welcome)
+async def root(req: Request) -> PlainTextResponse:
+    return PlainTextResponse(welcome(req.app.state.counter))
 
 @router.get("/about")
 async def about_() -> PlainTextResponse:

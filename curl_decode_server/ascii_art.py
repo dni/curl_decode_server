@@ -10,13 +10,14 @@ repo = "https://github.com/dni/curl_decode_server"
 x = "https://x.com/dnilabs"
 
 
-spacer = "[38;5;226m" + "-" * 44 + "[0m"
+spacer = "[38;5;226m" + "-" * 36 + "[0m"
 
 footer = """
-made with [38;5;196m❤[0m by [38;5;226mdni[
+made with [38;5;196m🧡[0m by [38;5;226mdni[
 """
 
-help = f"""
+def help(count: int):
+    return f"""
 {spacer}
 [38;5;226m*[0m bech32 decode ([38;5;082mcurl {url}/bech32/<string>[0m)
 [38;5;226m*[0m bech32 encode ([38;5;098mcurl -X PUT {url}/bech32/<hrp> --data <string>[0m)
@@ -29,15 +30,19 @@ help = f"""
 [38;5;226m*[0m sha256 hash   ([38;5;098mcurl -X PUT {url}/sha256 --data <string>[0m)
 [38;5;226m*[0m double sha256 ([38;5;098mcurl -X PUT {url}/2sha256 --data <string>[0m)
 {spacer}
+request counter: {count}
+{spacer}
 about ([38;5;082mcurl {url}/about[0m)
 donate ([38;5;082mcurl {url}/donate[0m)
 {footer}"""
 
-welcome = f"""{spacer}
-[38;5;32mWelcome to dni's curl en-/decoder :)[0m{help}"""
+def welcome(count: int) -> str:
+    return f"""{spacer}
+[38;5;32mWelcome to dni's curl en-/decoder :)[0m{help(count)}"""
 
-not_found = f"""{spacer}
-[38;5;32m[38;5;196m404[0m - encoding not found :([0m{help}"""
+def not_found(count: int) -> str:
+    return f"""{spacer}
+[38;5;32m[38;5;196m404[0m - encoding not found :([0m{help(count)}"""
 
 error = """[38;5;32m[38;5;196mERROR[0m - encoding/decoding failed :("""
 
@@ -50,6 +55,7 @@ about = f"""
 {spacer}
 [38;5;226m*[0m repository ([38;5;082m{repo}[0m)
 {footer}"""
+
 
 def donate():
     qr = QRCode()
