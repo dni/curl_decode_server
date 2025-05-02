@@ -7,15 +7,21 @@ from bech32 import bech32_decode, convertbits, bech32_encode
 
 from hashlib import sha256
 
-from .ascii_art import welcome
+from .ascii_art import welcome, about, donate
 
 router = APIRouter()
-
 
 @router.get("/")
 async def root() -> PlainTextResponse:
     return PlainTextResponse(welcome)
 
+@router.get("/about")
+async def about_() -> PlainTextResponse:
+    return PlainTextResponse(about)
+
+@router.get("/donate")
+async def qr() -> PlainTextResponse:
+    return PlainTextResponse(donate())
 
 @router.get("/bech32/{data}")
 async def bech32(data: str) -> PlainTextResponse:

@@ -14,6 +14,7 @@ python = "^3.13"
 bech32 = "^1.2.0"
 fastapi = {extras = ["standard"], version = "^0.115.11"}
 base58 = "^2.1.1"
+qrcode = "^8.2"
 
 [tool.poetry.group.dev.dependencies]
 types-requests = "^2.31.0.2"
