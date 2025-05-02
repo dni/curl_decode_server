@@ -4,9 +4,10 @@ from typing import AsyncGenerator
 from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
 
-from .ascii_art import not_found, error
+from .ascii_art import error, not_found
+from .middleware import file_path, init_middleware
 from .router import router
-from .middleware import request_counter, file_path, init_middleware
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator:

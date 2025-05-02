@@ -1,13 +1,12 @@
+from base64 import b32decode, b32encode, urlsafe_b64decode, urlsafe_b64encode
+from hashlib import sha256
+
+from base58 import b58decode, b58encode
+from bech32 import bech32_decode, bech32_encode, convertbits
 from fastapi import APIRouter, Body
 from fastapi.responses import PlainTextResponse
 
-from base58 import b58decode, b58encode
-from base64 import urlsafe_b64decode, b32decode, b32encode, urlsafe_b64encode
-from bech32 import bech32_decode, convertbits, bech32_encode
-
-from hashlib import sha256
-
-from .ascii_art import welcome, about, donate
+from .ascii_art import about, donate, welcome
 
 router = APIRouter()
 

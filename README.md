@@ -9,6 +9,12 @@
 * sha256
 * double sha256
 
+## run
+```console
+poetry install
+make run
+```
+
 
 ### help page
 ```console
